@@ -6,6 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 var FRAME_RATE = 30;
+var IDLE_TIMEOUT = 1000; //seconds
+var idleSecondsCounter = 0;
+
 var stage = null;
 var images = {}; // hash of images
 
@@ -74,7 +77,8 @@ window.onload = function() {
         instructionScreenPlayButtonAsset:'asset/instruction_screen_play_button.png',
         playingScreenAsset:'asset/playing_screen.png',
         playingScreenLightingAsset:'asset/playing_screen_lighting.png',
-        playingScreenDialAsset:'asset/dial.png',
+        playingScreenBustAMoveLightingAsset:'asset/bust_a_move.png',
+        playingScreenDialAsset:'asset/dial2.png',
         spriteSheetBugs:'asset/bugs_dancing_spritesheet.png'
     };
 
@@ -132,6 +136,7 @@ function initApplication() {
     playingScreen = new PlayingScreen({ stage: stage,
                                         backgroundImage: images.playingScreenAsset,
                                         dialImage:images.playingScreenDialAsset,
+                                        bustAMoveImage:images.playingScreenBustAMoveLightingAsset,
                                         lightingImage: images.playingScreenLightingAsset
     });
 
@@ -223,11 +228,13 @@ function playGame() {
                 dancingBugs.setY(0);
             }
             numKeysPressed ++;
+            playingScreen.lightingImage.show();
         }
         else {
             if (dancingBugs.getAnimation() != "idle") {
                 dancingBugs.setAnimation("idle");
                 dancingBugs.setY(59);
+                playingScreen.lightingImage.hide();
             }
 
             isPressedKeyLeft = !(evt.keyCode == 37);
@@ -239,6 +246,8 @@ function playGame() {
     document.onkeydown = function(evt) {
         isPressedKeyLeft = (evt.keyCode == 37);
         isPressedKeyRight = (evt.keyCode == 39);
+
+        idleSecondsCounter = 0;
     }
 
     setInterval(function() {
@@ -250,6 +259,7 @@ function playGame() {
     }, 3000);
 
     setInterval(gameLoopHandler, 1000 / FRAME_RATE);
+    setInterval(CheckIdleTimeHandler, IDLE_TIMEOUT);
 }
 
 function endGame() {
@@ -257,21 +267,32 @@ function endGame() {
 }
 
 function gameLoopHandler() {
+    speedOfPressingKeys = Math.max(0, numKeysPressed - numKeysMissed);
+    var angle = Math.min(Math.PI / 2, speedOfPressingKeys / Math.PI);
 
-    speedOfPressingKeys = numKeysPressed - numKeysMissed;
-    var angle = speedOfPressingKeys * Math.PI;
+    playingScreen.bustAMoveImage.transitionTo({opacity: (angle > Math.PI / 3) ? 1 : 0, duration: 1});
     playingScreen.dialImage.transitionTo({rotation: angle, duration: 0.5});
-
-    var curX = dancingBugs.getX();
-    if (isPressedKeyLeft) {
-   //     dancingBugs.setX(curX + 5);
-    }
-
-    if (isPressedKeyRight) {
-   //     dancingBugs.setX(curX - 5);
-    }
 
     animationLayer.draw();
 
 }
 //check keyboard idle state
+
+function CheckIdleTimeHandler() {
+    if (idleSecondsCounter) { // idle
+        if (numKeysMissed < numKeysPressed) {
+            numKeysMissed += 15;
+        } else {
+            numKeysMissed = numKeysPressed = 0;
+            if (dancingBugs.getAnimation() != "idle") {
+                dancingBugs.setAnimation("idle");
+                dancingBugs.setY(59);
+                playingScreen.lightingImage.hide();
+            }
+        }
+    }
+    else { // active
+
+    }
+    idleSecondsCounter ++;
+}

@@ -33,7 +33,7 @@ var gameOverScreen;
 var key1Text, key2Text, key3Text;
 var scoreText, levelText;
 //animations
-var onScreenKeysLayer;
+var textLayer;
 var animationLayer;
 var dancingBugs;
 // game logic
@@ -42,6 +42,9 @@ var numKeysPressed = 0;
 var numKeysMissed = 0;
 var isGameStarted = false;
 var timeInRedZone = 0;
+var score = 0;
+var level = 1;
+var scorePerLevel = [2000, 4000, 6000, 8000, 10000];
 
 var intervalHandlerIds =[];
 
@@ -160,9 +163,8 @@ function initApplication() {
         gameOverScreen.layer.drawHit();
     });
     gameOverScreen.playAgainButton.on("click", function() {
-
+        selectScreen(playingScreen);
     });
-
 
     selectScreen(titleScreen);
 }
@@ -199,10 +201,26 @@ function getKeys() {
     var index = Math.floor((Math.random()*3));
     return keys[index];
 }
+
+function addScoreText(score, xPos, yPos, offsetX, offsetY, layer, removedWhenFinishingTween) {
+    var scoreText = new Kinetic.Text({ x: xPos, y: yPos,
+        text: score, fontSize: 22, fontFamily: 'Calibri', fill: 'yellow'});
+    layer.add(scoreText);
+    scoreText.transitionTo({opacity:0, x: xPos + offsetX, y: yPos + offsetY, duration: Math.floor((Math.random()*2) + 1), callback: function() {
+        if (removedWhenFinishingTween) {
+            scoreText.remove();
+        }
+    }});
+}
 // game controller
 function initGame() {
-    numKeysMissed = 0;
+    speedOfPressingKeys = 0;
     numKeysPressed = 0;
+    numKeysMissed = 0;
+    isGameStarted = false;
+    timeInRedZone = 0;
+    score = 0;
+    level = 1;
 
     dancingBugs = new Kinetic.Sprite({
         x: 256,
@@ -232,16 +250,16 @@ function initGame() {
                 text: "000000", fontSize: 16, fontFamily: 'QuartzBolD', fill: '#ffe169'});
 
     levelText = new Kinetic.Text({ x: 590, y: 18,
-                text: "1", fontSize: 16, fontFamily: 'QuartzBolD', fill: '#ffe169'});
+                text: level, fontSize: 16, fontFamily: 'QuartzBolD', fill: '#ffe169'});
 
-    onScreenKeysLayer = new Kinetic.Layer();
-    onScreenKeysLayer.add(scoreText);
-    onScreenKeysLayer.add(levelText);
-    onScreenKeysLayer.add(key1Text);
-    onScreenKeysLayer.add(key2Text);
-    onScreenKeysLayer.add(key3Text);
+    textLayer = new Kinetic.Layer();
+    textLayer.add(scoreText);
+    textLayer.add(levelText);
+    textLayer.add(key1Text);
+    textLayer.add(key2Text);
+    textLayer.add(key3Text);
 
-    stage.add(onScreenKeysLayer);
+    stage.add(textLayer);
 }
 
 function playGame() {
@@ -255,6 +273,20 @@ function playGame() {
             }
             numKeysPressed ++;
             playingScreen.lightingImage.show();
+
+            score += 100;
+            scoreText.setText(score);
+
+            addScoreText("+100", Math.random()*100 + 400, 300, 0, -300, textLayer, true);
+
+            if (score > scorePerLevel[level-1]) {
+                level ++;
+                levelText.setText(level);
+            }
+
+            if (level > scorePerLevel.length) {
+                selectScreen(gameOverScreen);
+            }
         }
         else {
             if (dancingBugs.getAnimation() != "idle") {
@@ -272,7 +304,6 @@ function playGame() {
     document.onkeydown = function(evt) {
         isPressedKeyLeft = (evt.keyCode == 37);
         isPressedKeyRight = (evt.keyCode == 39);
-
         idleSecondsCounter = 0;
     }
 
@@ -288,10 +319,19 @@ function playGame() {
 }
 
 function endGame() {
+    document.onkeyup = null;
+    document.onkeydown = null;
     while (intervalHandlerIds.length) {
         var id = intervalHandlerIds.pop();
         clearInterval(id);
     }
+
+    var finalScoreText = new Kinetic.Text({ x: 270, y: 195,
+        text: score, fontSize: 46, fontFamily: 'QuartzBolD', fill: '#ffe169'});
+    textLayer = new Kinetic.Layer();
+    finalScoreText.setX((688 - finalScoreText.getWidth()) / 2)
+    textLayer.add(finalScoreText);
+    stage.add(textLayer)
 }
 
 function gameLoopHandler() {
@@ -301,7 +341,7 @@ function gameLoopHandler() {
     playingScreen.bustAMoveImage.transitionTo({opacity: (angle > Math.PI / 3) ? 1 : 0, duration: 1});
     playingScreen.dialImage.transitionTo({rotation: angle, duration: 0.5});
 
-    onScreenKeysLayer.draw();
+    textLayer.draw();
     animationLayer.draw();
 }
 

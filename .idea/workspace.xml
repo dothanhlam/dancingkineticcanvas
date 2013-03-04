@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e835f82a-5721-427b-aecf-19840e26f750" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\asset\bugs_dancing_spritesheet.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\asset\bust_a_move.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\asset\dial.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\asset\dial2.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\asset\game_over_screen.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\asset\game_over_screen_play_again.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\asset\instruction_screen.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\asset\instruction_screen_play_button.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\asset\playing_screen.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\asset\playing_screen_lighting.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\asset\speaker_on.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\asset\title_screen.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\asset\title_screen_play_button.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
     </list>
     <ignored path="Dancing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,19 +23,19 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="298" column="69" selection-start="9558" selection-end="9558" vertical-scroll-proportion="0.030411448">
+            <state line="19" column="0" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="screens.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="screens.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/screens.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.0">
+            <state line="46" column="0" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.78205127">
               <folding />
             </state>
           </provider>
@@ -135,6 +123,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dancing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dancing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="asset" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -283,13 +285,18 @@
       <created>1362360252750</created>
       <updated>1362360252750</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="remove asset folder">
+      <created>1362367970272</created>
+      <updated>1362367970272</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22773972" sideWeight="0.49815497" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -303,7 +310,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -344,7 +350,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove old readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove asset folder" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -362,6 +368,7 @@
     <MESSAGE value="continue update game with fun" />
     <MESSAGE value="adding nodejs server&#10;commit new readme content" />
     <MESSAGE value="remove old readme" />
+    <MESSAGE value="remove asset folder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -370,7 +377,7 @@
           <properties />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="1177" />
+      <option name="time" value="1276" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -430,16 +437,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/screens.js">
+    <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.0">
+        <state line="19" column="0" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
+    <entry file="file://$PROJECT_DIR$/js/screens.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="298" column="69" selection-start="9558" selection-end="9558" vertical-scroll-proportion="0.030411448">
+        <state line="46" column="0" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.78205127">
           <folding />
         </state>
       </provider>

@@ -7,6 +7,7 @@
  */
 var FRAME_RATE = 30;
 var IDLE_TIMEOUT = 1000; //seconds
+var GAME_OVER_DURATION = 5; //
 var idleSecondsCounter = 0;
 
 var stage = null;
@@ -16,27 +17,33 @@ var keys = [['Q','W','E'],['A','S','D'],['J','K','L']];
 var keysMap = { 65:"A", 97:"A", 83:"S", 115:"S", 68:"D", 100:"D",
                 81:"Q",113:"Q",87:"W", 118:"W", 69:"E", 101:"E",
                 74:"J",106:"Q",75:"K", 107:"K", 76:"L", 108:"L"};
+
 var currentKeys = keys[0];
 var isPressedKeyLeft = false;
 var isPressedKeyRight = false;
 
+//screens
 var currentScreen;
 var titleScreen;
 var instructionScreen;
 var playingScreen;
 var gameOverScreen;
 
-//gaming
+//text
 var key1Text, key2Text, key3Text;
 var scoreText, levelText;
-
+//animations
 var onScreenKeysLayer;
 var animationLayer;
 var dancingBugs;
-// logic
+// game logic
 var speedOfPressingKeys = 0;
 var numKeysPressed = 0;
 var numKeysMissed = 0;
+var isGameStarted = false;
+var timeInRedZone = 0;
+
+var intervalHandlerIds =[];
 
 var animations = {
     idle:[  {x:0, y:0, width: 152, height: 257},
@@ -79,7 +86,9 @@ window.onload = function() {
         playingScreenLightingAsset:'asset/playing_screen_lighting.png',
         playingScreenBustAMoveLightingAsset:'asset/bust_a_move.png',
         playingScreenDialAsset:'asset/dial2.png',
-        spriteSheetBugs:'asset/bugs_dancing_spritesheet.png'
+        spriteSheetBugs:'asset/bugs_dancing_spritesheet.png',
+        gameOverScreenAsset:'asset/game_over_screen.png',
+        gameOverScreenPlayAgainButtonAsset:'asset/game_over_screen_play_again.png'
     };
 
     loadImages(sources, function(){
@@ -113,9 +122,10 @@ function initApplication() {
     titleScreen.playButton.createImageHitRegion(function() {
         titleScreen.layer.drawHit();
     });
+
     titleScreen.playButton.on("click", function() {
         selectScreen(instructionScreen)
-     });
+    });
 
 
     instructionScreen = new InstructionScreen({ stage:stage,
@@ -139,6 +149,20 @@ function initApplication() {
                                         bustAMoveImage:images.playingScreenBustAMoveLightingAsset,
                                         lightingImage: images.playingScreenLightingAsset
     });
+
+    gameOverScreen = new GameOverScreen({stage: stage,
+                                        backgroundImage:images.gameOverScreenAsset,
+                                        playAgainButton:{
+                                            x: 360,y: 285,
+                                            source: images.gameOverScreenPlayAgainButtonAsset}});
+
+    gameOverScreen.playAgainButton.createImageHitRegion(function() {
+        gameOverScreen.layer.drawHit();
+    });
+    gameOverScreen.playAgainButton.on("click", function() {
+
+    });
+
 
     selectScreen(titleScreen);
 }
@@ -222,6 +246,8 @@ function initGame() {
 
 function playGame() {
     document.onkeyup = function(evt) {
+        isGameStarted = true;
+
         if (currentKeys.indexOf(keysMap[evt.keyCode]) >= 0) {
             if (dancingBugs.getAnimation() != "dancing") {
                 dancingBugs.setAnimation("dancing");
@@ -250,20 +276,22 @@ function playGame() {
         idleSecondsCounter = 0;
     }
 
-    setInterval(function() {
+    intervalHandlerIds.push( setInterval(function() {
         currentKeys = getKeys();
         key1Text.setText(currentKeys[0]);
         key2Text.setText(currentKeys[1]);
         key3Text.setText(currentKeys[2]);
-        onScreenKeysLayer.draw();
-    }, 3000);
+    }, 3000));
 
-    setInterval(gameLoopHandler, 1000 / FRAME_RATE);
-    setInterval(CheckIdleTimeHandler, IDLE_TIMEOUT);
+    intervalHandlerIds.push( setInterval(gameLoopHandler, 1000 / FRAME_RATE));
+    intervalHandlerIds.push( setInterval(checkIdleTimeHandler, IDLE_TIMEOUT));
 }
 
 function endGame() {
-
+    while (intervalHandlerIds.length) {
+        var id = intervalHandlerIds.pop();
+        clearInterval(id);
+    }
 }
 
 function gameLoopHandler() {
@@ -273,12 +301,12 @@ function gameLoopHandler() {
     playingScreen.bustAMoveImage.transitionTo({opacity: (angle > Math.PI / 3) ? 1 : 0, duration: 1});
     playingScreen.dialImage.transitionTo({rotation: angle, duration: 0.5});
 
+    onScreenKeysLayer.draw();
     animationLayer.draw();
-
 }
-//check keyboard idle state
 
-function CheckIdleTimeHandler() {
+//check keyboard idle state
+function checkIdleTimeHandler() {
     if (idleSecondsCounter) { // idle
         if (numKeysMissed < numKeysPressed) {
             numKeysMissed += 15;
@@ -290,9 +318,16 @@ function CheckIdleTimeHandler() {
                 playingScreen.lightingImage.hide();
             }
         }
+
+        if (isGameStarted) {
+            timeInRedZone ++;
+            if (timeInRedZone  > GAME_OVER_DURATION) {
+                selectScreen(gameOverScreen);
+            }
+        }
     }
     else { // active
-
+        timeInRedZone = 0;
     }
     idleSecondsCounter ++;
 }

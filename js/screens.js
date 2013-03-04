@@ -41,7 +41,7 @@ function GameOverScreen(config) {
     this.stage = config.stage;
     this.layer = new Kinetic.Layer();
     this.backgroundImage = new Kinetic.Image({image: config.backgroundImage, x: 0, y: 0});
-    this.playAgainButton = new Kinetic.Image({image:config.playButton.source, x: config.playButton.x, y:config.playButton.y});
+    this.playAgainButton = new Kinetic.Image({image:config.playAgainButton.source, x: config.playAgainButton.x, y:config.playAgainButton.y});
     this.layer.add(this.backgroundImage);
     this.layer.add(this.playAgainButton);
 

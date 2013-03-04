@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e835f82a-5721-427b-aecf-19840e26f750" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\Development\Canvas\Dancing\readme.MD" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/screens.js" afterPath="$PROJECT_DIR$/js/screens.js" />
     </list>
     <ignored path="Dancing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,28 +24,19 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="290" column="13" selection-start="9212" selection-end="9212" vertical-scroll-proportion="0.0">
+            <state line="298" column="69" selection-start="9558" selection-end="9558" vertical-scroll-proportion="0.36314848">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="screens.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="screens.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/screens.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="1" selection-start="2006" selection-end="2006" vertical-scroll-proportion="0.8389982">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web-server.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/web-server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="40" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0">
+            <state line="46" column="0" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -65,9 +57,9 @@
       <list>
         <option value="$PROJECT_DIR$/readme.MD" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/main.js" />
-        <option value="$PROJECT_DIR$/js/screens.js" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/js/screens.js" />
+        <option value="$PROJECT_DIR$/js/main.js" />
       </list>
     </option>
   </component>
@@ -119,6 +111,34 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Dancing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dancing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dancing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dancing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dancing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="asset" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -262,7 +282,11 @@
       <created>1362359842764</created>
       <updated>1362359842764</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="remove old readme">
+      <created>1362360252750</created>
+      <updated>1362360252750</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -323,7 +347,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding nodejs server&#10;commit new readme content" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove old readme" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -340,6 +364,7 @@
     <MESSAGE value="trying commit again" />
     <MESSAGE value="continue update game with fun" />
     <MESSAGE value="adding nodejs server&#10;commit new readme content" />
+    <MESSAGE value="remove old readme" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -348,7 +373,7 @@
           <properties />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="1126" />
+      <option name="time" value="1175" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -380,13 +405,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="290" column="13" selection-start="9212" selection-end="9212" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/web-server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="40" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0">
@@ -394,9 +412,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="46" selection-start="631" selection-end="631" vertical-scroll-proportion="0.5095368">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/screens.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="1" selection-start="2006" selection-end="2006" vertical-scroll-proportion="0.8389982">
+        <state line="46" column="0" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="298" column="69" selection-start="9558" selection-end="9558" vertical-scroll-proportion="0.36314848">
           <folding />
         </state>
       </provider>
